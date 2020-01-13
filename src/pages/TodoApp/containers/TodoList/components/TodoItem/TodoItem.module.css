@@ -1,0 +1,38 @@
+.item {
+    width: 540px;
+    height: 30px;
+    padding: 0px 10px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-content: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #8a7de3;
+    border-radius: 10px;
+}
+.completed {
+    text-decoration: line-through;
+}
+.controlButtons {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+}
+.controlButtons button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4834d4;
+    cursor: pointer;
+}
+.controlButtons button svg {
+    width: 50%;
+    height: 50%;
+}
+.controlButtons button svg path {
+    fill: #eeecfb;
+}

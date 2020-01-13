@@ -1,4 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
+import { ReactComponent as UpdateTitleIcon } from '../../../../../../assets/icons/update-title-icon.svg'
+import { ReactComponent as DeleteTodoIcon } from '../../../../../../assets/icons/delete-todo-icon.svg'
+import styles from './TodoItem.module.css'
 
 function TodoItem({ id, title, completed, onModalOpen, onStatusUpdate, onDelete }) {
     const [isChecked, setIsChecked] = useState(completed)
@@ -8,18 +11,24 @@ function TodoItem({ id, title, completed, onModalOpen, onStatusUpdate, onDelete 
     useEffect(() => {
         onStatusUpdate(id, isChecked)
     }, [onStatusUpdate, id, isChecked])
-    const handleTitleUpdate = useCallback(() => {
+    const handleModalOpen = useCallback(() => {
         onModalOpen(id)
     }, [onModalOpen, id])
     const handleDelete = useCallback(() => {
         onDelete(id)
     }, [onDelete, id])
     return (
-        <li>
-            <span>{title}</span>
-            <button onClick={handleTitleUpdate}>Atualizar</button>
-            <input type='checkbox' value={isChecked} onChange={handleChange}/>
-            <button onClick={handleDelete}>Deletar</button>
+        <li className={styles.item}>
+            <span className={completed ? styles.completed : null}>{title}</span>
+            <div className={styles.controlButtons}>
+                <button onClick={handleModalOpen}>
+                    <UpdateTitleIcon/>
+                </button>
+                <input type='checkbox' value={isChecked} onChange={handleChange}/>
+                <button onClick={handleDelete}>
+                    <DeleteTodoIcon/>
+                </button>
+            </div>
         </li>
     )
 }
