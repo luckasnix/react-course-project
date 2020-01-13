@@ -2,4 +2,16 @@
     position: fixed;
     top: 140px;
     left: 0px;
+    width: 100%;
+    height: calc(100vh - 140px);
+    padding: 40px 60px;
+    background-color: #dff9fb;
+    overflow-y: scroll;
+}
+.container ul {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 20px;
+    list-style: none;
 }
