@@ -27,6 +27,7 @@
     border: none;
     border-radius: 50%;
     background-color: #4834d4;
+    box-shadow: inset 0px 0px 4px 2px #2e2287;
     cursor: pointer;
 }
 .controlButtons button svg {
@@ -35,4 +36,34 @@
 }
 .controlButtons button svg path {
     fill: #eeecfb;
+}
+.controlButtons input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    border-radius: 10px;
+    background-color: #eeecfb;
+    box-shadow: inset 0px 0px 4px 2px #aba2eb;
+    appearance: none;
+    cursor: pointer;
+}
+.controlButtons input[type="checkbox"]:checked {
+    background-color: #8a7de3;
+    box-shadow: inset 0px 0px 4px 2px #4834d4;
+}
+.controlButtons input[type="checkbox"]::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #4834d4;
+    box-shadow: inset 0px 0px 4px 2px #2e2287;
+    transform: scale(1.1);
+    transition: all 400ms;
+}
+.controlButtons input[type="checkbox"]:checked::before {
+    left: 20px;
 }
