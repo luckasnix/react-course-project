@@ -4,10 +4,10 @@ import * as yup from 'yup'
 import { ReactComponent as CloseIcon } from '../../../../../../assets/icons/delete-icon.svg'
 import styles from './TodoModal.module.css'
 
-function TodoModal({ id, title, onModalClose, onTitleUpdate }) {
+function TodoModal({ id, onModalClose, onTitleUpdate, findTitle }) {
     const { getFieldProps, touched, errors, isValid, handleSubmit } = useFormik({
         initialValues: {
-            title: title
+            title: findTitle(id)
         },
         validationSchema: yup.object({
             title: yup.string()

@@ -12,8 +12,8 @@ function TodoItem({ id, title, completed, onModalOpen, onStatusUpdate, onDelete 
         onStatusUpdate(id, isChecked)
     }, [onStatusUpdate, id, isChecked])
     const handleModalOpen = useCallback(() => {
-        onModalOpen(id, title)
-    }, [onModalOpen, id, title])
+        onModalOpen(id)
+    }, [onModalOpen, id])
     const handleDelete = useCallback(() => {
         onDelete(id)
     }, [onDelete, id])
