@@ -5,7 +5,7 @@ import { ReactComponent as CloseIcon } from '../../../../../../assets/icons/dele
 import styles from './TodoModal.module.css'
 
 function TodoModal({ id, onModalClose, onTitleUpdate, findTitle }) {
-    const { getFieldProps, touched, errors, isValid, handleSubmit } = useFormik({
+    const { getFieldProps, errors, handleSubmit } = useFormik({
         initialValues: {
             title: findTitle(id)
         },
@@ -13,6 +13,8 @@ function TodoModal({ id, onModalClose, onTitleUpdate, findTitle }) {
             title: yup.string()
                 .required('Você precisa preencher com uma tarefa.')
         }),
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values, formikBag) => {
             onTitleUpdate(id, values.title)
             formikBag.setFieldValue('title', '', false)
@@ -34,14 +36,10 @@ function TodoModal({ id, onModalClose, onTitleUpdate, findTitle }) {
                         autoComplete='off'
                         {...getFieldProps('title')}
                     />
-                    {touched.title && errors.title ? (
+                    {errors.title ? (
                         <small className={styles.error}>{errors.title}</small>
                     ) : null}
-                    <button
-                        className={styles.submit}
-                        type='submit'
-                        disabled={!isValid}
-                    >
+                    <button className={styles.submit} type='submit'>
                         Atualizar tarefa
                     </button>
                 </form>

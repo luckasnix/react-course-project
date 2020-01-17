@@ -7,7 +7,7 @@ import styles from './TodoCreator.module.css'
 
 function TodoCreator() {
     const { dispatchToTodos } = useContext(TodosContext)
-    const { getFieldProps, touched, errors, isValid, handleSubmit } = useFormik({
+    const { getFieldProps, errors, handleSubmit } = useFormik({
         initialValues: {
             title: ''
         },
@@ -15,6 +15,8 @@ function TodoCreator() {
             title: yup.string()
                 .required('Você precisa preencher com uma tarefa.')
         }),
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values, formikBag) => {
             dispatchToTodos(todosActions.addTodo(values.title))
             formikBag.setFieldValue('title', '', false)
@@ -34,14 +36,10 @@ function TodoCreator() {
                 ref={inputTitle}
                 {...getFieldProps('title')}
             />
-            {touched.title && errors.title ? (
+            {errors.title ? (
                 <small className={styles.error}>{errors.title}</small>
             ) : null}
-            <button
-                className={styles.submit}
-                type='submit'
-                disabled={!isValid}
-            >
+            <button className={styles.submit} type='submit'>
                 Adicionar tarefa
             </button>
         </form>
