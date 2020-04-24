@@ -42,13 +42,10 @@ function TodoList() {
         setCurId(null)
     }, [])
     const getTitle = useCallback((id) => {
-        let curTitle = ''
-        todos.forEach((todo) => {
-            if (todo.id === id) {
-                curTitle = todo.title
-            }
+        const curTodo = todos.find((todo) => {
+            return todo.id === id
         })
-        return curTitle
+        return curTodo.title
     }, [todos])
     const { filter } = useContext(FilterContext)
     return (
